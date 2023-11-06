@@ -9,7 +9,7 @@ fn main() {
             .expect("Unable to generate bindings");
 
         bindings
-            .write_to_file("src/lib.rs")
+            .write_to_file("src/sudoku.rs")
             .expect("Couldn't write bindings!");
     }
 
