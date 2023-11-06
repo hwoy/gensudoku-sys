@@ -1,6 +1,6 @@
 # Gensudoku-sys
 
-Gensudoku-sys is a just low level sudoku boards generator ffi-library in Rust.
+Gensudoku-sys is just a low level sudoku boards generator ffi-library in Rust.
 
 
 ## Contact me
