@@ -1,16 +1,28 @@
-fn main()
-{
-    let bindings = bindgen::Builder::default()
+use std::path::Path;
 
-        .header("gensudoku/sudoku.h")
+fn main() {
+    {
+        let bindings = bindgen::Builder::default()
+            .header("gensudoku/sudoku.h")
+            .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+            .generate()
+            .expect("Unable to generate bindings");
 
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+        bindings
+            .write_to_file("src/lib.rs")
+            .expect("Couldn't write bindings!");
+    }
 
-        .generate()
+    {
+        let lib = "sudoku";
+        let path = ["gensudoku/sudoku.c", "gensudoku/glibcrng.c"];
 
-        .expect("Unable to generate bindings");
-		
-		bindings
-        .write_to_file("src/lib.rs")
-        .expect("Couldn't write bindings!");
+        if path.iter().all(|p| Path::new(p).exists()) {
+            let mut builder = cc::Build::new();
+            for p in path.iter() {
+                builder.file(p);
+            }
+            builder.extra_warnings(true).compile(lib);
+        }
+    }
 }
