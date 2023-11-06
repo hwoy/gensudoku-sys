@@ -6,7 +6,7 @@ Gensudoku-sys is just a low level sudoku boards generator ffi-library in Rust.
 
 ```sh
 
-git clone recurse-submodules https://github.com/hwoy/gensudoku-sys.git
+git clone --recurse-submodules https://github.com/hwoy/gensudoku-sys.git
 cd gensudoku-sys
 cargo build
 
