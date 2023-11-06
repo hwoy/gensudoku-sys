@@ -1,0 +1,3 @@
+[submodule "gensudoku"]
+	path = gensudoku
+	url = https://github.com/hwoy/gensudoku.git
