@@ -5,6 +5,7 @@ fn main() {
         let bindings = bindgen::Builder::default()
             .header("gensudoku/sudoku.h")
             .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+            .clang_arg("-fvisibility=default")
             .generate()
             .expect("Unable to generate bindings");
 
